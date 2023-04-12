@@ -74,6 +74,8 @@ def get_patch_yi(model, image):
 
     y = []  # init Y
 
+    if not isinstance(image, np.ndarray):
+        image = np.asarray(image)
     patches = get_patches(image, stride=1024)
 
     for patch in patches:  # for every patch

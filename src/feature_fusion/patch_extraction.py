@@ -32,13 +32,19 @@ def get_images_and_labels(tampered_path, authentic_path):
     authentic_dir = authentic_path
     images = {}
     for im in glob.glob(authentic_dir):
-        images[im] = {}
-        images[im]['mat'] = cv2.imread(im)
-        images[im]['label'] = 0
+        img = cv2.imread(im)
+        if img is None:
+            print(f"Error reading image: {im}")
+            continue
+        img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        images[im] = {'mat': img_rgb, 'label': 0}
     for im in glob.glob(tampered_dir):
-        images[im] = {}
-        images[im]['mat'] = cv2.imread(im)
-        images[im]['label'] = 1
+        img = cv2.imread(im)
+        if img is None:
+            print(f"Error reading image: {im}")
+            continue
+        img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        images[im] = {'mat': img_rgb, 'label': 1}
     return images
 
 
