@@ -7,6 +7,7 @@ from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
 from matplotlib.colors import ListedColormap
 import seaborn as sn
+from tqdm import tqdm
 
 
 def optimize_hyperparams(x, y, params):
@@ -18,6 +19,7 @@ def optimize_hyperparams(x, y, params):
     :returns: The optimal hyperparameters
     """
     # Optimize hyper-parameters
+    print('Running Hyperparameter optimization of the SVM')
     model = svm.SVC()
     model_grid_search = GridSearchCV(model, params, cv=10, n_jobs=5)
     model_grid_search.fit(x.values, y.values)
@@ -34,11 +36,12 @@ def classify(x, y, opt_params):
     :param opt_params: The optimal hyperparameters
     """
     # Single SVM run with optimized hyperparameters and
+    print('Classifying a feature vector using SVM and print some metrics')
     model = svm.SVC(kernel='rbf', gamma=opt_params['gamma'], C=opt_params['C'])
     scores = cross_val_score(model, x, y, cv=10, scoring='accuracy', n_jobs=-1)
-    print(scores)
-    print(np.mean(scores))
-    print(np.std(scores))
+    print("10 fold cross validation accuracy scores : "+str(scores))
+    print("Mean Accuracy Score "+str(np.mean(scores)))
+    print("Standard deviation of scores: "+str(np.std(scores)))
 
 
 def print_confusion_matrix(x, y, opt_params):
@@ -70,12 +73,14 @@ def find_misclassified(x, y, opt_params, img_ids):
     """
     y_pred, y_test = get_predictions(x, y, opt_params)
     misclassified = []
-    for i in range(len(y_test)):
+    print('Computing the misclassified image ids and writing them to a csv')
+    for i in tqdm(range(len(y_test))):
         if y_pred[i] != y_test.values[i]:
             misclassified.append(str(y_pred[i]) + ',' + str(y_test.values[i]) + ',' + str(img_ids[y_test.index[i]]))
     df = pd.DataFrame(misclassified)
     df.columns = ['Prediction,Actual,ImageName']
     df.to_csv('Misclassified.csv', index=False)
+
 
 
 def get_predictions(x, y, opt_params):
