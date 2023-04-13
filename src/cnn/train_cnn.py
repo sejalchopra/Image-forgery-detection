@@ -73,7 +73,10 @@ def train_net(net, train_set, n_epochs, learning_rate, batch_size):
                 total_running_loss += loss.item()
                 c += 1
 
-        epoch_predictions = (np.array(total_predicted) == np.array(total_labels)).sum().item()
+        # epoch_predictions = (np.array(total_predicted) == np.array(total_labels)).sum().item()
+        total_predicted_vals = torch.tensor(total_predicted,device='cpu')
+        total_labels_vals = torch.tensor(total_labels,device = 'cpu')
+        epoch_predictions = (total_predicted_vals.data.numpy() == total_labels_vals.data.numpy()).sum().item()
         print('---------- Epoch %d Loss: %.3f Accuracy: %.3f Time: %.3f----------' % (
             epoch + 1, total_running_loss / c, epoch_predictions / len(total_predicted),
             time.time() - training_start_time))
