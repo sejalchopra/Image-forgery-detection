@@ -1,3 +1,5 @@
+import os
+
 from skimage import io
 import warnings
 
@@ -5,6 +7,8 @@ from .extraction_utils import get_ref_df, check_and_reshape, extract_all_patches
     find_tampered_patches
 
 # from src.patch_extraction.mask_extraction import extract_masks
+from .mask_extraction import extract_masks
+
 warnings.filterwarnings('ignore')
 
 
@@ -54,19 +58,19 @@ class PatchExtractorNC:
         :return:
         """
         # uncomment to extract masks
-        # mask_path = 'masks'
-        # if os.path.exists(mask_path) and os.path.isdir(mask_path):
-        #     if not os.listdir(mask_path):
-        #         print("Extracting masks")
-        #         extract_masks()
-        #         print("Masks extracted")
-        #     else:
-        #         print("Masks exist. Patch extraction begins...")
-        # else:
-        #     os.makedirs(mask_path)
-        #     print("Extracting masks")
-        #     extract_masks()
-        #     print("Masks extracted")
+        mask_path = 'masks'
+        if os.path.exists(mask_path) and os.path.isdir(mask_path):
+            if not os.listdir(mask_path):
+                print("Extracting masks")
+                extract_masks()
+                print("Masks extracted")
+            else:
+                print("Masks exist. Patch extraction begins...")
+        else:
+            os.makedirs(mask_path)
+            print("Extracting masks")
+            extract_masks()
+            print("Masks extracted")
 
         all_refs = get_ref_df()
 

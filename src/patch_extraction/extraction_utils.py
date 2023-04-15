@@ -150,7 +150,7 @@ def find_tampered_patches(image, im_name, mask, window_shape, stride, dataset, p
     if dataset == 'casia2':
         mask_patches = view_as_windows(mask, window_shape, step=stride)
     elif dataset == 'nc16':
-        mask_patches = view_as_windows(mask, (128, 128), step=stride)
+        mask_patches = view_as_windows(mask, window_shape, step=stride)
     else:
         raise NotSupportedDataset('The datasets supported are casia2 and nc16')
 

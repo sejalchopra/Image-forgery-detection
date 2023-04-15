@@ -8,7 +8,7 @@ from cnn.train_cnn import train_net
 
 torch.manual_seed(0)
 
-DATA_DIR = "patches_casia_with_rot/"  # put the directory of the patches in your machine
+DATA_DIR = "patches_nc_with_rot/"  # put the directory of the patches in your machine
 transform = transforms.Compose([transforms.ToTensor()])
 
 data = datasets.ImageFolder(root=DATA_DIR, transform=transform)  # Fetch data
@@ -27,4 +27,4 @@ epoch_loss, epoch_accuracy = train_net(cnn, data, n_epochs=250, learning_rate=0.
 pd.DataFrame(epoch_loss).to_csv('SRM_loss.csv')
 pd.DataFrame(epoch_accuracy).to_csv('SRM_accuracy.csv')
 
-torch.save(cnn.state_dict(), 'Cnn.pt')
+torch.save(cnn.state_dict(), 'Cnn_nc16.pt')

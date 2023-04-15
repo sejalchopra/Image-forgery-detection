@@ -1,6 +1,7 @@
 data/CASIA2/
 src/masks/
 src/patches_casia_with_rot/
+ src/patches_nc_with_rot/
 .idea
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -73,7 +73,7 @@ class CNN(nn.Module):
 
         # In the training phase we also need the fully connected layer with softmax
         if self.training:
-            # x = self.drop1(x) # used only for the NC dataset
+            x = self.drop1(x) # used only for the NC dataset
             x = f.relu(self.fc(x))
             x = f.softmax(x, dim=1)
 
