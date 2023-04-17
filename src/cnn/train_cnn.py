@@ -4,7 +4,6 @@ import torch.utils.data
 from torch.optim.lr_scheduler import StepLR
 from torch.autograd import Variable
 import time
-import numpy as np
 from tqdm import tqdm
 
 
@@ -74,8 +73,9 @@ def train_net(net, train_set, n_epochs, learning_rate, batch_size):
                 c += 1
 
         # epoch_predictions = (np.array(total_predicted) == np.array(total_labels)).sum().item()
-        total_predicted_vals = torch.tensor(total_predicted,device='cpu')
-        total_labels_vals = torch.tensor(total_labels,device = 'cpu')
+        # converting variables from GPU to CPU device
+        total_predicted_vals = torch.tensor(total_predicted, device='cpu')
+        total_labels_vals = torch.tensor(total_labels, device='cpu')
         epoch_predictions = (total_predicted_vals.data.numpy() == total_labels_vals.data.numpy()).sum().item()
         print('---------- Epoch %d Loss: %.3f Accuracy: %.3f Time: %.3f----------' % (
             epoch + 1, total_running_loss / c, epoch_predictions / len(total_predicted),
