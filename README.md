@@ -35,14 +35,14 @@ This project aims to detect image forgeries using a Convolutional Neural Network
 
 1. Run the patch extraction script to create image patches for both tampered and untampered regions.
 `python extract_patches.py`
-b)	Now we would use the extracted image patches to train our cnn model and save it in ‘data/output/pre_trained_cnn‘ directory.
+2. Now we would use the extracted image patches to train our cnn model and save it in ‘data/output/pre_trained_cnn‘ directory.
 `python train_cnn.py`
-c)	Now we can execute the feature extraction script. This script will generate 400-D feature representations for each image using the trained CNN model. This script will create and save the fused feature vectors for each image in the ’data/output/features’ folder.
+3. Now we can execute the feature extraction script. This script will generate 400-D feature representations for each image using the trained CNN model. This script will create and save the fused feature vectors for each image in the ’data/output/features’ folder.
 `python feature_extraction.py`
-d)	The last step is to do SVM classification. 
+4. The last step is to do SVM classification. 
 `python svm_classification.py`
 
-This script will train and test the SVM classifier on the extracted features and report the accuracy and cross-entropy loss per epoch for each dataset.
+This will train and test the SVM classifier on the extracted features and report the accuracy and cross-entropy loss per epoch for each dataset.
 
 After executing the SVM classification script, we obtain the 10-fold cross-validation accuracy for both datasets and the final files generated can be checked in output folder.
 
