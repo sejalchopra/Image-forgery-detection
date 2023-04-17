@@ -1,3 +1,4 @@
+# Extract Patches : To extract training patches which will be fed into the CNN
 from patch_extraction.patch_extractor_casia import PatchExtractorCASIA
 from patch_extraction.patch_extractor_nc import PatchExtractorNC
 
