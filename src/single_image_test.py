@@ -16,7 +16,7 @@ def get_feature_vector(image_path: str, model):
 # Load the pretrained CNN with the CASIA2 dataset
 with torch.no_grad():
     our_cnn = CNN()
-    our_cnn.load_state_dict(torch.load('../data/output/pre_trained_cnn/CASIA2_WithRot_LR001_b128_nodrop.pt',
+    our_cnn.load_state_dict(torch.load('../data/output/trained_models/casia2.pt',
                                        map_location=lambda storage, loc: storage))
     our_cnn.eval()
     our_cnn = our_cnn.double()

@@ -1,9 +1,6 @@
-In case you want to test the pipeline, the following steps need to be taken:
+The following files need to be run in the same order as below
 
-1) Extract CNN training patches: as shown in `extract_patches.py`
-
-2) Train CNN: open the `train_net.py` and change DATA_DIR to point to the patches path extracted from the previous step. Run the script, it will save the trained network as shown [here](https://github.com/kPsarakis/Image-Forgery-Detection-CNN/blob/9dc3f0468cf5f0161f2ac296ece98001a603c1ea/src/train_net.py#L30)
-
-3) Compute image features: as shown in `feature_extraction.py`. Here you will need to provide the trained CNN as input from the previous step. Change the path in the following [line](https://github.com/kPsarakis/Image-Forgery-Detection-CNN/blob/9dc3f0468cf5f0161f2ac296ece98001a603c1ea/src/feature_extraction.py#L8)
-
-4) Run SVM cross-validation: change the features path in `svm_classification.py` at line 5 to point to the latest feature extraction. Run the script.
+1)  `extract_patches.py` -This code is used to extract training patches which will be frd into the CNN
+2)  `train_net.py` - This code will be used to train the entire CNN model and produce a model .pt file
+3)  `feature_extraction.py`- This code takes the trained CNN model as input from the previous step and  extrtacts the features which are stored in a csv file 
+4)  `svm_classification.py` - This code performs the cross validation and outputs the evaluation metrics.
