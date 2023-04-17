@@ -46,7 +46,27 @@ This will train and test the SVM classifier on the extracted features and report
 
 After executing the SVM classification script, we obtain the 10-fold cross-validation accuracy for both datasets and the final files generated can be checked in output folder.
 
-### Report
+## Output
+Output directory : `data\output`
+It contains all the data generated as output during the execution of the project. This directory has subdirectories for different types of output data, including accuracy, features, loss function, and trained models.
+
+### Accuracy 
+`data\output\accuracy`
+The accuracy directory contains two CSV files - CASIA2_Accuracy.csv and NC16_Accuracy.csv - that record the accuracy of the models trained on the CASIA2 and NC16 datasets, respectively.
+
+### Features
+`data\output\features`
+The features directory contains two CSV files - CASIA2_extracted_features.csv and NC16_extracted_features.csv - that store the extracted features for each dataset. These features can be used for further analysis or model training.
+
+### Loss Function
+`data\output\loss_function`
+The loss_function directory contains two CSV files - CASIA2_Loss.csv and NC16_Loss.csv - that record the loss function trend values for the models trained on the CASIA2 and NC16 datasets, respectively.
+
+### Trained Models
+`data\output\trained_models`
+The trained_models directory contains the final trained models saved in PyTorch format - Cnn_casia2.pt and Cnn_nc16.pt - for the CASIA2 and NC16 datasets, respectively. These models can be used for prediction or further fine-tuning.
+
+## Report
 A Final Report is Available in the Report Section of the Repository
 
 ## Team Information 
