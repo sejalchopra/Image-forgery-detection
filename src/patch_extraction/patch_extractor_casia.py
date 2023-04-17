@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 import warnings
 
 from .extraction_utils import check_and_reshape, extract_all_patches, create_dirs, save_patches, find_tampered_patches
-from .mask_extraction import extract_masks
 
 warnings.filterwarnings('ignore')
 from src.patch_extraction.mask_extraction import extract_masks
@@ -83,7 +82,7 @@ class PatchExtractorCASIA:
 
         # define window shape
         window_shape = (128, 128, 3)
-        tp_dir = self.input_path+'/Tp/'
+        tp_dir = self.input_path + '/Tp/'
         rep_num = 0
         # run for all the tampered images
         for f in os.listdir(tp_dir):
@@ -92,7 +91,7 @@ class PatchExtractorCASIA:
                 image = io.imread(tp_dir + f)
                 im_name = f.split(os.sep)[-1].split('.')[0]
                 # read mask
-                mask = io.imread( 'masks/' + im_name + '_gt.png')
+                mask = io.imread('masks/' + im_name + '_gt.png')
                 image, mask = check_and_reshape(image, mask)
 
                 # extract patches from images and masks

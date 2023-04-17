@@ -12,9 +12,9 @@ def find_mask(sp_pic, au_pic_dict):
     :param sp_pic: Tampered image
     :param au_pic_dict: Dictionary with keys the name of the tampered image and values its path.
     """
-    background_index = [13, 21]  # indices of background image in the tamoered image name
+    background_index = [13, 21]  # indices of background image in the tampered image name
     save_name = sp_pic.split(os.sep)[-1][:-4]  # name of the mask
-    if(save_name.__contains__('Tp_S_NRD_S_N_ani20066_ani20066_02108')):
+    if save_name.__contains__('Tp_S_NRD_S_N_ani20066_ani20066_02108'):
         print('found')
     sp_name = sp_pic.split(os.sep)[-1][background_index[0]:background_index[1]]
     if sp_name in au_pic_dict.keys():

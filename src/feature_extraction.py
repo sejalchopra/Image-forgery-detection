@@ -26,4 +26,4 @@ with torch.no_grad():
     output_filename = 'NC2016_WithRot_LR001_b128_nodrop.csv'
 
     # Calling the create_feature_vectors_nc function to create feature vectors for the images
-    create_feature_vectors_nc(model,'../data/NC2016/' , output_filename)
+    create_feature_vectors_nc(model, '../data/NC2016/', output_filename)
