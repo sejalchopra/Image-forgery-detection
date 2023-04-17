@@ -14,35 +14,35 @@ class CNN(nn.Module):
         """
         super(CNN, self).__init__()
 
-        self.conv0 = nn.Conv2d(3, 3, kernel_size=5, stride=1, padding=0)
+        self.conv0 = nn.Conv2d(3, 3, kernel_size=(5, 5), stride=1, padding=0)
         nn.init.xavier_uniform_(self.conv0.weight)
 
-        self.conv1 = nn.Conv2d(3, 30, kernel_size=5, stride=2, padding=0)
+        self.conv1 = nn.Conv2d(3, 30, kernel_size=(5, 5), stride=2, padding=0)
         self.conv1.weight = nn.Parameter(get_filters())
 
         self.pool1 = nn.MaxPool2d(kernel_size=2, stride=2, padding=0)
 
-        self.conv2 = nn.Conv2d(30, 16, kernel_size=3, stride=1, padding=0)
+        self.conv2 = nn.Conv2d(30, 16, kernel_size=(3, 3), stride=1, padding=0)
         nn.init.xavier_uniform_(self.conv2.weight)
 
-        self.conv3 = nn.Conv2d(16, 16, kernel_size=3, stride=1, padding=0)
+        self.conv3 = nn.Conv2d(16, 16, kernel_size=(3, 3), stride=1, padding=0)
         nn.init.xavier_uniform_(self.conv3.weight)
 
-        self.conv4 = nn.Conv2d(16, 16, kernel_size=3, stride=1, padding=0)
+        self.conv4 = nn.Conv2d(16, 16, kernel_size=(3, 3), stride=1, padding=0)
         nn.init.xavier_uniform_(self.conv4.weight)
 
         self.pool2 = nn.MaxPool2d(kernel_size=2, stride=2, padding=0)
 
-        self.conv5 = nn.Conv2d(16, 16, kernel_size=3, stride=1, padding=0)
+        self.conv5 = nn.Conv2d(16, 16, kernel_size=(3, 3), stride=1, padding=0)
         nn.init.xavier_uniform_(self.conv5.weight)
 
-        self.conv6 = nn.Conv2d(16, 16, kernel_size=3, stride=1, padding=0)
+        self.conv6 = nn.Conv2d(16, 16, kernel_size=(3, 3), stride=1, padding=0)
         nn.init.xavier_uniform_(self.conv6.weight)
 
-        self.conv7 = nn.Conv2d(16, 16, kernel_size=3, stride=1, padding=0)
+        self.conv7 = nn.Conv2d(16, 16, kernel_size=(3, 3), stride=1, padding=0)
         nn.init.xavier_uniform_(self.conv7.weight)
 
-        self.conv8 = nn.Conv2d(16, 16, kernel_size=3, stride=1, padding=0)
+        self.conv8 = nn.Conv2d(16, 16, kernel_size=(3, 3), stride=1, padding=0)
         nn.init.xavier_uniform_(self.conv8.weight)
 
         self.fc = nn.Linear(16 * 5 * 5, 2)

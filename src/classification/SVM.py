@@ -39,9 +39,9 @@ def classify(x, y, opt_params):
     print('Classifying a feature vector using SVM and print some metrics')
     model = svm.SVC(kernel='rbf', gamma=opt_params['gamma'], C=opt_params['C'])
     scores = cross_val_score(model, x, y, cv=10, scoring='accuracy', n_jobs=-1)
-    print("10 fold cross validation accuracy scores : "+str(scores))
-    print("Mean Accuracy Score "+str(np.mean(scores)))
-    print("Standard deviation of scores: "+str(np.std(scores)))
+    print("10 fold cross validation accuracy scores : " + str(scores))
+    print("Mean Accuracy Score " + str(np.mean(scores)))
+    print("Standard deviation of scores: " + str(np.std(scores)))
 
 
 def print_confusion_matrix(x, y, opt_params):
@@ -80,7 +80,6 @@ def find_misclassified(x, y, opt_params, img_ids):
     df = pd.DataFrame(misclassified)
     df.columns = ['Prediction,Actual,ImageName']
     df.to_csv('Misclassified.csv', index=False)
-
 
 
 def get_predictions(x, y, opt_params):
