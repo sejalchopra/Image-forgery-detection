@@ -14,8 +14,8 @@ def plot_epochs(metric1, metric2, ylab):
     Returns:
     None
     """
-    plt.plot(metric2, label='CASIA2')
-    plt.plot(metric1, label='NC16')
+    plt.plot(metric1, label='CASIA2')
+    plt.plot(metric2, label='NC16')
     plt.ylabel(ylab)
     plt.xlabel("Epoch")
     plt.legend(loc='lower right')
